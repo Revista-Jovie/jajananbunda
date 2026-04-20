@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "namaPemesan": "Rina",
+    "jumlahPesanan": "1000",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "10/04/2025",
+      "estimasi": "20/04/2025"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 1000000
+    }
+  },
+  {
+    "id": 2,
+    "namaPemesan": "Kiky",
+    "jumlahPesanan": "500",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Jasmine",
+      "ukuranKertas": "20 cm x 20 cm"
+    },
+    "time": {
+      "tanggalPesan": "02/04/2025",
+      "estimasi": "12/04/2025"
+    },
+    "details": {
+      "gambar": "/img/undagan 3",
+      "harga": 1000000
+    }
+  },
+  {
+    "id": 3,
+    "namaPemesan": "Rere",
+    "jumlahPesanan": "800",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Concorde",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "01/01/2025",
+      "estimasi": "11/01/2025"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 1600000
+    }
+  },
+  {
+    "id": 4,
+    "namaPemesan": "Putri",
+    "jumlahPesanan": "1500",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "19/02/2025",
+      "estimasi": "28/02/2025"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 1500000
+    }
+  },
+  {
+    "id": 5,
+    "namaPemesan": "Dono",
+    "jumlahPesanan": "2000",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Jasmine",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "10/02/2025",
+      "estimasi": "22/02/2025"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 4000000
+    }
+  },
+  {
+    "id": 6,
+    "namaPemesan": "Johan",
+    "jumlahPesanan": "500",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Aster",
+      "ukuranKertas": "20 cm x 20 cm"
+    },
+    "time": {
+      "tanggalPesan": "15/10/2024",
+      "estimasi": "26/10/2024"
+    },
+    "details": {
+      "gambar": "/img/undagan 3",
+      "harga": 500000
+    }
+  },
+  {
+    "id": 7,
+    "namaPemesan": "Albert",
+    "jumlahPesanan": "1000",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "02/08/2024",
+      "estimasi": "12/08/2024"
+    },
+    "details": {
+      "gambar": "/img/undagan 3",
+      "harga": 1000000
+    }
+  },
+  {
+    "id": 8,
+    "namaPemesan": "Ayu",
+    "jumlahPesanan": "200",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "20 cm x 20 cm"
+    },
+    "time": {
+      "tanggalPesan": "07/06/2024",
+      "estimasi": "18/06/2024"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 400000
+    }
+  },
+  {
+    "id": 9,
+    "namaPemesan": "Mumut",
+    "jumlahPesanan": "500",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Jasmine",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "10/12/2024",
+      "estimasi": "20/12/2024"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 500000
+    }
+  },
+  {
+    "id": 10,
+    "namaPemesan": "Angga",
+    "jumlahPesanan": "1000",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "13/12/2024",
+      "estimasi": "18/12/2024"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 2000000
+    }
+  },
+  {
+    "id": 11,
+    "namaPemesan": "Epi",
+    "jumlahPesanan": "500",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Aster",
+      "ukuranKertas": "20 cm x 20 cm"
+    },
+    "time": {
+      "tanggalPesan": "01/04/2024",
+      "estimasi": "08/04/2024"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 1000000
+    }
+  },
+  {
+    "id": 12,
+    "namaPemesan": "Adi",
+    "jumlahPesanan": "500",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "10/10/2024",
+      "estimasi": "20/10/2024"
+    },
+    "details": {
+      "gambar": "/img/undagan 3",
+      "harga": 500000
+    }
+  },
+  {
+    "id": 13,
+    "namaPemesan": "Ningrum",
+    "jumlahPesanan": "1000",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Aster",
+      "ukuranKertas": "20 cm x 20 cm"
+    },
+    "time": {
+      "tanggalPesan": "11/09/2024",
+      "estimasi": "18/09/2024"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 2000000
+    }
+  },
+  {
+    "id": 14,
+    "namaPemesan": "Riski",
+    "jumlahPesanan": "500",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "10/04/2024",
+      "estimasi": "20/04/2024"
+    },
+    "details": {
+      "gambar": "/img/undagan 3",
+      "harga": 500000
+    }
+  },
+  {
+    "id": 15,
+    "namaPemesan": "Bulan",
+    "jumlahPesanan": "1000",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "10/04/2023",
+      "estimasi": "20/04/2023"
+    },
+    "details": {
+      "gambar": "/img/undagan 3",
+      "harga": 1000000
+    }
+  },
+  {
+    "id": 16,
+    "namaPemesan": "Ajil",
+    "jumlahPesanan": "500",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Jasmine",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "30/08/2024",
+      "estimasi": "27/08/2024"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 500000
+    }
+  },
+  {
+    "id": 17,
+    "namaPemesan": "Alin",
+    "jumlahPesanan": "1000",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "11/10/2024",
+      "estimasi": "20/10/2024"
+    },
+    "details": {
+      "gambar": "/img/undagan 3",
+      "harga": 1000000
+    }
+  },
+  {
+    "id": 18,
+    "namaPemesan": "Erik",
+    "jumlahPesanan": "800",
+    "kategori": {
+      "jenis": "Elegan",
+      "tipeKertas": "Aster",
+      "ukuranKertas": "20 cm x 20 cm"
+    },
+    "time": {
+      "tanggalPesan": "17/08/2024",
+      "estimasi": "23/08/2024"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 800000
+    }
+  },
+  {
+    "id": 19,
+    "namaPemesan": "Arman",
+    "jumlahPesanan": "1000",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Ivory",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "17/10/2024",
+      "estimasi": "22/10/2024"
+    },
+    "details": {
+      "gambar": "/img/undangan 2",
+      "harga": 1000000
+    }
+  },
+  {
+    "id": 20,
+    "namaPemesan": "Chandra",
+    "jumlahPesanan": "800",
+    "kategori": {
+      "jenis": "Classic",
+      "tipeKertas": "Jasmine",
+      "ukuranKertas": "12 cm x 16 cm"
+    },
+    "time": {
+      "tanggalPesan": "05/11/2024",
+      "estimasi": "12/11/2024"
+    },
+    "details": {
+      "gambar": "/img/undagan 3",
+      "harga": 800000
+    }
+  }
+]

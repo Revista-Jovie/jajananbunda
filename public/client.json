@@ -1,0 +1,183 @@
+[
+    {
+      "id": 1,
+      "nama": "Rina",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "rina123@gmail.com",
+        "noHp": "081212121212"
+      }
+    },
+    {
+      "id": 2,
+      "nama": "Bagus",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "bagus@contoh.com",
+        "noHp": "081234560002"
+      }
+    },
+    {
+      "id": 3,
+      "nama": "Siti",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "siti@contoh.com",
+        "noHp": "081234560003"
+      }
+    },
+    {
+      "id": 4,
+      "nama": "Joko",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "joko@contoh.com",
+        "noHp": "081234560004"
+      }
+    },
+    {
+      "id": 5,
+      "nama": "Dewi",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "dewi@contoh.com",
+        "noHp": "081234560005"
+      }
+    },
+    {
+      "id": 6,
+      "nama": "Ahmad",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "ahmad@contoh.com",
+        "noHp": "081234560006"
+      }
+    },
+    {
+      "id": 7,
+      "nama": "Putri",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "putri@contoh.com",
+        "noHp": "081234560007"
+      }
+    },
+    {
+      "id": 8,
+      "nama": "Nugroho",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "nugroho@contoh.com",
+        "noHp": "081234560008"
+      }
+    },
+    {
+      "id": 9,
+      "nama": "Lia",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "lia@contoh.com",
+        "noHp": "081234560009"
+      }
+    },
+    {
+      "id": 10,
+      "nama": "Rio",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "rio@contoh.com",
+        "noHp": "081234560010"
+      }
+    },
+    {
+      "id": 11,
+      "nama": "Melati",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "melati@contoh.com",
+        "noHp": "081234560011"
+      }
+    },
+    {
+      "id": 12,
+      "nama": "Budi",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "budi@contoh.com",
+        "noHp": "081234560012"
+      }
+    },
+    {
+      "id": 13,
+      "nama": "Ayu",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "ayu@contoh.com",
+        "noHp": "081234560013"
+      }
+    },
+    {
+      "id": 14,
+      "nama": "Rian",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "rian@contoh.com",
+        "noHp": "081234560014"
+      }
+    },
+    {
+      "id": 15,
+      "nama": "Nadia",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "nadia@contoh.com",
+        "noHp": "081234560015"
+      }
+    },
+    {
+      "id": 16,
+      "nama": "Tono",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "tono@contoh.com",
+        "noHp": "081234560016"
+      }
+    },
+    {
+      "id": 17,
+      "nama": "Karina",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "karina@contoh.com",
+        "noHp": "081234560017"
+      }
+    },
+    {
+      "id": 18,
+      "nama": "Andi",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "andi@contoh.com",
+        "noHp": "081234560018"
+      }
+    },
+    {
+      "id": 19,
+      "nama": "Maya",
+      "jenisKelamin": "Perempuan",
+      "kontak": {
+        "email": "maya@contoh.com",
+        "noHp": "081234560019"
+      }
+    },
+    {
+      "id": 20,
+      "nama": "Fajar",
+      "jenisKelamin": "Laki-laki",
+      "kontak": {
+        "email": "fajar@contoh.com",
+        "noHp": "081234560020"
+      }
+    }
+  ]
+  

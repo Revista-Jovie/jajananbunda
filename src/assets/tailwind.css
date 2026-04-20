@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: all;
+}
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url("/fonts/NunitoSans.ttf");
+}
+
+@theme {
+  --font-nunitosans: "NunitoSans", sans-serif;
+
+  --color-biru: #4880ff;
+  --color-hitam: #202224;
+  --color-merah: #ff0000;
+  --color-profil: #404040;
+  --color-abu: #565656;
+  --color-pink: #FE83A1;
+  --color-border: #e0e0e0;
+  --color-search: #d5d5d5;
+  --color-users: #8280ff;
+  --color-orders: #fec53d;
+  --color-sales: #4ad991;
+  --color-cancel: #ff9066;
+  --color-status: #00b69b;
+
+  --color-latar: #f3f4f6;
+  --color-teks: #374151;
+  --color-teks-samping: #6b7280;
+  --color-garis: #e5e7eb;
+  --color-kuning: #f59e0b;
+}
