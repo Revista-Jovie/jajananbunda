@@ -97,10 +97,10 @@ export default function Feedback() {
         </div>
       </div>
 
-      <table className="min-w-full divide-y divide-gray-200 rounded-2xl shadow-lg">
+      <table className="min-w-full divide-y divide-gray-200 rounded-2xl shadow-lg overflow-hidden">
         <thead>
-          <tr className="bg-blue-600 text-white text-sm font-semibold text-center">
-            <th className="px-4 py-3">#</th>
+          <tr className="bg-orange-400 text-white text-sm font-semibold text-center">
+            <th className="px-4 py-3">No</th>
             <th className="px-4 py-3">Nama</th>
             <th className="px-4 py-3">Pesan</th>
             <th className="px-4 py-3">Rating</th>

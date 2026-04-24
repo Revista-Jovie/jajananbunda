@@ -84,7 +84,7 @@ export default function FaQ() {
             onChange={(e) => setQuery(e.target.value)}
           />
           <button
-            className="btn bg-biru text-white hover:bg-blue-700"
+            className="btn bg-orange text-white hover:bg-orange-700"
             onClick={() => addModalRef.current?.showModal()}
           >
             Tambah FaQ
@@ -95,9 +95,9 @@ export default function FaQ() {
       {/* TABEL */}
       <div className="overflow-x-auto shadow rounded-xl">
         <table className="table w-full">
-          <thead className="bg-blue-600 text-white text-sm text-center">
+          <thead className="bg-orange-400 text-white text-sm text-center">
             <tr>
-              <th className="px-4 py-3">#</th>
+              <th className="px-4 py-3">No</th>
               <th className="px-4 py-3 text-left">Pertanyaan</th>
               <th className="px-4 py-3 text-left">Jawaban</th>
               <th className="px-4 py-3">Aksi</th>
@@ -186,7 +186,7 @@ export default function FaQ() {
             <input name="pertanyaan" placeholder="Pertanyaan" className="input input-bordered w-full" required />
             <textarea name="jawaban" placeholder="Jawaban" className="textarea textarea-bordered w-full" rows={3} required />
             <div className="modal-action">
-              <button type="submit" className="btn bg-biru text-white">Simpan</button>
+              <button type="submit" className="btn bg-orange text-white hover:bg-orange-700">Simpan</button>
               <button type="button" className="btn" onClick={() => addModalRef.current?.close()}>
                 Batal
               </button>
@@ -194,7 +194,7 @@ export default function FaQ() {
           </form>
         </div>
         <form method="dialog" className="modal-backdrop">
-          <button>close</button>
+          <button>Close</button>
         </form>
       </dialog>
 
@@ -224,7 +224,7 @@ export default function FaQ() {
               <input name="pertanyaan" defaultValue={editingFaq.pertanyaan} className="input input-bordered w-full" required />
               <textarea name="jawaban" defaultValue={editingFaq.jawaban} className="textarea textarea-bordered w-full" rows={3} required />
               <div className="modal-action">
-                <button type="submit" className="btn bg-blue-600 text-white">Simpan</button>
+                <button type="submit" className="btn bg-orange-600 text-white hover:bg-orange-700">Simpan</button>
                 <button
                   type="button"
                   className="btn"
@@ -240,7 +240,7 @@ export default function FaQ() {
           )}
         </div>
         <form method="dialog" className="modal-backdrop">
-          <button>close</button>
+          <button>Close</button>
         </form>
       </dialog>
     </div>

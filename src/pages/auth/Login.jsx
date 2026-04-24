@@ -19,22 +19,22 @@ const Login = () => {
     if (email === "admin@gmail.com" && password === "admin123") {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("isAdmin", "true");
-      window.location.href = "https://wedding-gilt-theta.vercel.app/";
+      window.location.href = "/";
       return;
     }
 
-    // 🔐 Login user biasa via Supabase
-    try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) throw error;
+    // // 🔐 Login user biasa via Supabase
+    // try {
+    //   const { error } = await supabase.auth.signInWithPassword({ email, password });
+    //   if (error) throw error;
 
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("isAdmin", "false");
-      window.location.href = "https://wedding-app-kel4.vercel.app";
-    } catch (err) {
-      console.error("❌ Login gagal:", err.message);
-      setError("Email atau password salah. Coba lagi.");
-    }
+    //   localStorage.setItem("isLoggedIn", "true");
+    //   localStorage.setItem("isAdmin", "false");
+    //   window.location.href = "https://wedding-app-kel4.vercel.app";
+    // } catch (err) {
+    //   console.error("❌ Login gagal:", err.message);
+    //   setError("Email atau password salah. Coba lagi.");
+    // }
   };
 
   return (

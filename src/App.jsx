@@ -21,6 +21,7 @@ const CrewDetail = React.lazy(() => import("./pages/CrewDetail"));
 const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
 const OrderDetail = React.lazy(() => import("./pages/OrderDetail"));
 const Rekomendasi = React.lazy(() => import("./pages/Rekomendasi"));
+const Menu = React.lazy(() => import("./pages/Menu"));
 
 // import Dashboard from "./pages/Dashboard";
 // import OrderList from "./pages/OrderList";
@@ -51,6 +52,7 @@ function App() {
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/faq" element={<FaQ />} />
             <Route path="/rekomendasi" element={<Rekomendasi />} />
+            <Route path="/menu" element={<Menu />} />
 
             <Route path="/error/400" element={<ErrorPage kode={400} />} />
             <Route path="/error/401" element={<ErrorPage kode={401} />} />

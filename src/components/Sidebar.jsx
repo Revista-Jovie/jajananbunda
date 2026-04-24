@@ -1,3 +1,4 @@
+import { BiFoodMenu } from "react-icons/bi"; 
 import { FiUserCheck } from "react-icons/fi";
 import { BsQuestionCircle } from "react-icons/bs";
 import {
@@ -15,7 +16,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <div className="w-64 min-h-screen bg-white p-6 shadow-md flex flex-col">
+    <div className="w-64 h-screen sticky top-0 bg-white p-6 shadow-md flex flex-col">
       {/* Logo */}
       <div className="flex justify-center items-center mb-4">
         <img
@@ -32,11 +33,16 @@ export default function Sidebar() {
           label="Dashboard"
           to="/"
         />
+        <SidebarItem
+        icon={<BiFoodMenu/>}
+        label="Menu"
+        to="/menu"
+        />
         {/* <SidebarItem icon={<FiUserCheck />} label="Client" to="/client" /> */}
-        <SidebarItem icon={<AiOutlineTeam />} label="Crew" to="/crew" />
+        {/* <SidebarItem icon={<AiOutlineTeam />} label="Crew" to="/crew" /> */}
         <SidebarItem
           icon={<AiOutlineUnorderedList />}
-          label="Order"
+          label="Pesanan"
           to="/orders"
         />
         <SidebarItem
@@ -54,11 +60,11 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div className="border-t border-border mt-auto pt-6 space-y-2">
-        <SidebarItem
+        {/* <SidebarItem
           icon={<AiOutlineSetting />}
           label="Settings"
           to="/settings"
-        />
+        /> */}
         <SidebarItem icon={<MdPowerSettingsNew />} label="Logout" to="/login" />
       </div>
     </div>
