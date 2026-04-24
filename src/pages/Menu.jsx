@@ -110,9 +110,6 @@ export default function MenuMakanan() {
               <p className="text-sm font-semibold text-blue-600 mt-1">
                 Rp {Number(menu.harga || 0).toLocaleString("id-ID")}
               </p>
-              <p className="text-xs text-gray-500 mt-1">
-                Kategori: {menu.kategori}
-              </p>
               
               <div className="mt-3">
                 <div
@@ -187,12 +184,13 @@ export default function MenuMakanan() {
 
                 const fotoUrl = await menuApi.uploadMenuFoto(file);
                 const newMenu = {
-                  nama_menu: form.nama.value,
-                  foto_menu: fotoUrl,
-                  harga: form.harga.value,
-                  kategori: form.kategori.value,
-                  status: form.status.value,
+                    nama_menu: form.nama.value,
+                    foto_menu: fotoUrl,
+                    harga: parseInt(form.harga.value),
+                    status: form.status.value,
                 };
+
+                console.log("DATA DIKIRIM:", newMenu);
 
                 await menuApi.createMenu(newMenu);
                 const updated = await menuApi.fetchMenu();

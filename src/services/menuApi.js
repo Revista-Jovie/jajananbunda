@@ -31,13 +31,17 @@ export const menuApi = {
 
   // Menambahkan data menu baru
   async createMenu(menuData) {
-    const { data, error } = await supabase
-      .from("menu")
-      .insert([menuData]);
-      
-    if (error) throw error;
-    return data;
-  },
+  const { data, error } = await supabase
+    .from("menu")
+    .insert([menuData]);
+
+  if (error) {
+    console.error("SUPABASE ERROR:", error);
+    throw error;
+  }
+
+  return data;
+},
 
   // Memperbarui data menu yang sudah ada
   async updateMenu(id, menuData) {
