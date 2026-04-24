@@ -19,9 +19,9 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="flex justify-center items-center mb-4">
         <img
-          src="/img/logo lavanya.png"
-          alt="Lavanya Logo"
-          className="h-35 w-auto"
+          src="/img/logo jajanan bunda.png"
+          alt="Jajanan Bunda Logo"
+          className="h-20 w-auto"
         />
       </div>
 
@@ -64,20 +64,6 @@ export default function Sidebar() {
           label="Logout"
           to="/login"
         />
-
-        {/* Guest Links (open in same tab) */}
-        <SidebarItem
-          icon={<span className="text-xl">🌐</span>}
-          label="Guest Juni"
-          to="https://wedding-app-gray-six.vercel.app"
-          external
-        />
-        <SidebarItem
-          icon={<span className="text-xl">🌐</span>}
-          label="Guest Liza"
-          to="https://wedding-app-kel4.vercel.app"
-          external
-        />
       </div>
     </div>
   );
@@ -101,8 +87,8 @@ function SidebarItem({ icon, label, to, external = false }) {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `flex items-center gap-3 px-4 py-2 rounded-lg cursor-pointer font-nunitosans hover:bg-blue-100 hover:text-blue-600 transition ${
-          isActive ?  "bg-biru text-white" : "text-hitam"
+        `flex items-center gap-3 px-4 py-2 rounded-lg cursor-pointer font-nunitosans hover:bg-orange-100 hover:text-orange-600 transition ${
+          isActive ?  "bg-orange-600 text-white" : "text-hitam"
         }`
       }
     >

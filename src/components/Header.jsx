@@ -33,13 +33,13 @@ export default function Header({ onToggleSidebar }) {
 
         <div className="flex items-center gap-2 cursor-pointer">
           <img
-            src="/img/revista.jpg"
+            src="/img/profil.jpg"
             alt="avatar"
             className="w-8 h-8 rounded-full"
           />
           <div className="text-sm">
             <p className="font-semibold font-nunitosans leading-none text-abu">
-              Revista
+              Admin
             </p>
             <p className="text-hitam text-xs">Admin</p>
           </div>
