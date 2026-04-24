@@ -1,3 +1,4 @@
+import { MdDoneAll } from "react-icons/md"; 
 import { useEffect, useState } from "react";
 import {
   LineChart,
@@ -8,8 +9,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { FaBan, FaDollarSign } from "react-icons/fa";
-import { BsPeople, BsFillBoxFill } from "react-icons/bs";
+import { FaBan, FaDollarSign, FaEnvelope } from "react-icons/fa";
+import { BsFillBoxFill } from "react-icons/bs";
 import PageHeader from "../components/PageHeader";
 import { clientApi } from "../services/clientApi";
 import { orderApi } from "../services/orderApi";
@@ -18,10 +19,13 @@ import emailjs from '@emailjs/browser';
 export default function Dashboard() {
   const [totalUser, setTotalUser] = useState(0);
   const [totalOrder, setTotalOrder] = useState(0);
+  const [totalCompleted, setTotalCompleted] = useState(0); // State baru untuk pesanan selesai
+  const [totalCanceled, setTotalCanceled] = useState(0);   // State baru untuk pesanan batal
   const [totalSales, setTotalSales] = useState(0);
   const [chartData, setChartData] = useState([]);
   const [latestOrders, setLatestOrders] = useState([]);
   const [clients, setClients] = useState([]);
+  const [isSendingEmail, setIsSendingEmail] = useState(false); // State untuk loading tombol email
 
   useEffect(() => {
     loadClientData();
@@ -43,19 +47,31 @@ export default function Dashboard() {
       const orders = await orderApi.fetchAll();
       setTotalOrder(orders.length);
 
+      // Hitung pesanan selesai dan batal
+      const completed = orders.filter(o => o.status === "Selesai" || !o.status).length;
+      const canceled = orders.filter(o => o.status === "Canceled").length;
+      setTotalCompleted(completed);
+      setTotalCanceled(canceled);
+
       const total = orders.reduce((sum, item) => {
-        return sum + (parseInt(item.harga_paket) || 0);
+        // Hanya hitung pemasukan jika statusnya bukan canceled (opsional, sesuaikan bisnis logikamu)
+        if (item.status !== "Canceled") {
+          return sum + (parseInt(item.harga_paket) || 0);
+        }
+        return sum;
       }, 0);
       setTotalSales(total);
 
       const salesMap = {};
       orders.forEach((order) => {
-        const tanggal = order.hari_acara;
-        const harga = parseInt(order.harga_paket) || 0;
-        if (!salesMap[tanggal]) {
-          salesMap[tanggal] = 0;
+        if (order.status !== "Canceled") {
+          const tanggal = order.hari_acara;
+          const harga = parseInt(order.harga_paket) || 0;
+          if (!salesMap[tanggal]) {
+            salesMap[tanggal] = 0;
+          }
+          salesMap[tanggal] += harga;
         }
-        salesMap[tanggal] += harga;
       });
 
       const chartArray = Object.entries(salesMap).map(([tanggal, total]) => ({
@@ -80,6 +96,9 @@ export default function Dashboard() {
       return;
     }
 
+    setIsSendingEmail(true); // Mulai loading
+    let successCount = 0;
+
     for (const client of clients) {
       if (!client.email) continue;
 
@@ -96,50 +115,51 @@ export default function Dashboard() {
           "xU7SYfICZGd2Hrt8s"
         );
 
+        successCount++;
         console.log(`✅ Email dikirim ke: ${client.email}`);
       } catch (error) {
         console.error(`❌ Gagal kirim ke ${client.email}:`, error);
       }
     }
-
-    alert("📨 Semua email promosi sudah dikirim.");
   };
 
   return (
     <div className="w-full px-6 py-5 md:px-10 space-y-6">
-      <PageHeader title="Dashboard" />
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <PageHeader title="Dashboard" />
+      </div>
 
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard
-          icon={<BsPeople />}
-          value={totalUser}
-          label="Total User"
-          bgColor="bg-users"
-        />
-        <StatCard
           icon={<BsFillBoxFill />}
           value={totalOrder}
-          label="Total Order"
+          label="Total Pesanan"
           bgColor="bg-orders"
+        />
+        <StatCard
+          icon={<MdDoneAll/>}
+          value={totalCompleted} // Menggunakan state yang benar
+          label="Total Pesanan Selesai"
+          bgColor="bg-done"
+        />
+        <StatCard
+          icon={<FaBan />}
+          value={totalCanceled} // Menggunakan state yang benar
+          label="Total Pesanan Batal"
+          bgColor="bg-cancel"
         />
         <StatCard
           icon={<FaDollarSign />}
           value={`Rp ${totalSales.toLocaleString("id-ID")}`}
-          label="Total Sales"
+          label="Total Pemasukan"
           bgColor="bg-sales"
-        />
-        <StatCard
-          icon={<FaBan />}
-          value="0"
-          label="Total Cancel"
-          bgColor="bg-cancel"
         />
       </div>
 
       <section className="bg-white rounded-xl p-5 shadow-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold font-nunitosans text-hitam">
-            Sales Details
+            Detail Pemasukan
           </h2>
           <select className="font-nunitosans border text-sm px-2 py-1 rounded-md">
             <option>All</option>
@@ -170,7 +190,7 @@ export default function Dashboard() {
       <section className="bg-white rounded-xl p-5 shadow-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold font-nunitosans text-hitam">
-            Order Terbaru
+            Pesanan Terbaru
           </h2>
           <select className="font-nunitosans border text-sm px-2 py-1 rounded-md">
             <option>All</option>
@@ -181,10 +201,11 @@ export default function Dashboard() {
           <table className="w-full text-sm font-nunitosans text-gray-700">
             <thead className="bg-gray-100 text-gray-500 text-left text-xs uppercase">
               <tr>
-                <th className="px-4 py-2">Pemesan</th>
-                <th className="px-4 py-2">Tanggal Acara</th>
-                <th className="px-4 py-2">Paket</th>
-                <th className="px-4 py-2">Harga</th>
+                <th className="px-4 py-2">Nama</th>
+                <th className="px-4 py-2">No HP</th>
+                <th className="px-4 py-2">Menu</th>
+                <th className="px-4 py-2">Jumlah Pesanan</th>
+                <th className="px-4 py-2">Catatan</th>
                 <th className="px-4 py-2">Status</th>
               </tr>
             </thead>
@@ -192,11 +213,12 @@ export default function Dashboard() {
               {latestOrders.map((item, index) => (
                 <tr key={index} className="border-b hover:bg-gray-50">
                   <td className="px-4 py-3">{item.nama_pemesan}</td>
-                  <td className="px-4 py-3">{item.hari_acara}</td>
+                  <td className="px-4 py-3">{item.no_hp || "-"}</td> {/* Diperbaiki */}
                   <td className="px-4 py-3">{item.paket}</td>
                   <td className="px-4 py-3">
                     Rp {parseInt(item.harga_paket).toLocaleString("id-ID")}
                   </td>
+                  <td className="px-4 py-3">{item.catatan || "-"}</td> {/* Diperbaiki */}
                   <td className="px-4 py-3">
                     <span
                       className={`text-xs font-semibold px-3 py-1 rounded-full ${
@@ -214,7 +236,7 @@ export default function Dashboard() {
               ))}
               {latestOrders.length === 0 && (
                 <tr>
-                  <td colSpan="5" className="text-center py-4 text-gray-400">
+                  <td colSpan="6" className="text-center py-4 text-gray-400">
                     Belum ada order terbaru.
                   </td>
                 </tr>

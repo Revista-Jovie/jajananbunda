@@ -32,7 +32,7 @@ export default function Sidebar() {
           label="Dashboard"
           to="/"
         />
-        <SidebarItem icon={<FiUserCheck />} label="Client" to="/client" />
+        {/* <SidebarItem icon={<FiUserCheck />} label="Client" to="/client" /> */}
         <SidebarItem icon={<AiOutlineTeam />} label="Crew" to="/crew" />
         <SidebarItem
           icon={<AiOutlineUnorderedList />}
@@ -45,11 +45,11 @@ export default function Sidebar() {
           to="/feedback"
         />
         <SidebarItem icon={<BsQuestionCircle />} label="FaQ" to="/faq" />
-        <SidebarItem
+        {/* <SidebarItem
           icon={<AiOutlineStar />}
           label="Rekomendasi"
           to="/rekomendasi"
-        />
+        /> */}
       </div>
 
       {/* Footer */}
@@ -59,11 +59,7 @@ export default function Sidebar() {
           label="Settings"
           to="/settings"
         />
-        <SidebarItem
-          icon={<MdPowerSettingsNew />}
-          label="Logout"
-          to="/login"
-        />
+        <SidebarItem icon={<MdPowerSettingsNew />} label="Logout" to="/login" />
       </div>
     </div>
   );
@@ -88,7 +84,7 @@ function SidebarItem({ icon, label, to, external = false }) {
       to={to}
       className={({ isActive }) =>
         `flex items-center gap-3 px-4 py-2 rounded-lg cursor-pointer font-nunitosans hover:bg-orange-100 hover:text-orange-600 transition ${
-          isActive ?  "bg-orange-600 text-white" : "text-hitam"
+          isActive ? "bg-orange-600 text-white" : "text-hitam"
         }`
       }
     >
