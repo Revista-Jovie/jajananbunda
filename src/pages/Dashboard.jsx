@@ -1,4 +1,4 @@
-import { MdDoneAll } from "react-icons/md"; 
+import { MdDoneAll } from "react-icons/md";
 import { useEffect, useState } from "react";
 import {
   LineChart,
@@ -9,117 +9,68 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { FaBan, FaDollarSign, FaEnvelope } from "react-icons/fa";
+import { FaDollarSign } from "react-icons/fa";
 import { BsFillBoxFill } from "react-icons/bs";
 import PageHeader from "../components/PageHeader";
 import { clientApi } from "../services/clientApi";
 import { pesananApi } from "../services/pesananApi";
-import emailjs from '@emailjs/browser';
 
 export default function Dashboard() {
-  const [totalUser, setTotalUser] = useState(0);
   const [totalOrder, setTotalOrder] = useState(0);
-  const [totalCompleted, setTotalCompleted] = useState(0); // State baru untuk pesanan selesai
-  const [totalCanceled, setTotalCanceled] = useState(0);   // State baru untuk pesanan batal
+  const [totalCompleted, setTotalCompleted] = useState(0);
   const [totalSales, setTotalSales] = useState(0);
   const [chartData, setChartData] = useState([]);
   const [latestOrders, setLatestOrders] = useState([]);
-  const [clients, setClients] = useState([]);
-  const [isSendingEmail, setIsSendingEmail] = useState(false); // State untuk loading tombol email
 
   useEffect(() => {
-    loadClientData();
     loadOrderData();
   }, []);
 
-  const loadClientData = async () => {
-    try {
-      const users = await clientApi.fetchAll();
-      setTotalUser(users.length);
-      setClients(users);
-    } catch (err) {
-      console.error("❌ Gagal ambil data client:", err);
-    }
-  };
-
   const loadOrderData = async () => {
     try {
-      const orders = await orderApi.fetchAll();
+      const orders = await pesananApi.fetchAll();
       setTotalOrder(orders.length);
 
-      // Hitung pesanan selesai dan batal
-      const completed = orders.filter(o => o.status === "Selesai" || !o.status).length;
-      const canceled = orders.filter(o => o.status === "Canceled").length;
+      // 1. Hitung pesanan selesai
+      const completed = orders.filter(
+        (o) => o.status === "Selesai" || !o.status,
+      ).length;
       setTotalCompleted(completed);
-      setTotalCanceled(canceled);
 
+      // 2. Hitung Total Pemasukan (Ganti harga_paket jadi harga)
       const total = orders.reduce((sum, item) => {
-        // Hanya hitung pemasukan jika statusnya bukan canceled (opsional, sesuaikan bisnis logikamu)
-        if (item.status !== "Canceled") {
-          return sum + (parseInt(item.harga_paket) || 0);
-        }
-        return sum;
+        return sum + (parseInt(item.harga) || 0);
       }, 0);
       setTotalSales(total);
 
+      // 3. Logika Grafik (Ganti hari_acara jadi created_at)
       const salesMap = {};
       orders.forEach((order) => {
-        if (order.status !== "Canceled") {
-          const tanggal = order.hari_acara;
-          const harga = parseInt(order.harga_paket) || 0;
-          if (!salesMap[tanggal]) {
-            salesMap[tanggal] = 0;
-          }
-          salesMap[tanggal] += harga;
+        // Ambil tanggal saja dari timestamp created_at (YYYY-MM-DD)
+        const tanggal = order.created_at ? order.created_at.split("T")[0] : "N/A";
+        const harga = parseInt(order.harga) || 0;
+        
+        if (!salesMap[tanggal]) {
+          salesMap[tanggal] = 0;
         }
+        salesMap[tanggal] += harga;
       });
 
-      const chartArray = Object.entries(salesMap).map(([tanggal, total]) => ({
-        name: tanggal,
-        value: total,
-      }));
+      const chartArray = Object.entries(salesMap)
+        .map(([tanggal, total]) => ({
+          name: tanggal,
+          value: total,
+        }))
+        .sort((a, b) => new Date(a.name) - new Date(b.name)); // Urutkan biar grafik gak lompat-lompat
 
       setChartData(chartArray);
 
       const sortedOrders = [...orders].sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        (a, b) => new Date(b.created_at) - new Date(a.created_at),
       );
       setLatestOrders(sortedOrders.slice(0, 3));
     } catch (err) {
       console.error("❌ Gagal ambil data order:", err);
-    }
-  };
-
-  const handleSendPromotionalEmail = async () => {
-    if (clients.length === 0) {
-      alert("⚠️ Tidak ada data client untuk dikirim email.");
-      return;
-    }
-
-    setIsSendingEmail(true); // Mulai loading
-    let successCount = 0;
-
-    for (const client of clients) {
-      if (!client.email) continue;
-
-      try {
-        const templateParams = {
-          name: client.nama_client || "Pelanggan",
-          email: client.email,
-        };
-
-        await emailjs.send(
-          "service_cdelfid",
-          "template_9rdnzxd",
-          templateParams,
-          "xU7SYfICZGd2Hrt8s"
-        );
-
-        successCount++;
-        console.log(`✅ Email dikirim ke: ${client.email}`);
-      } catch (error) {
-        console.error(`❌ Gagal kirim ke ${client.email}:`, error);
-      }
     }
   };
 
@@ -137,8 +88,8 @@ export default function Dashboard() {
           bgColor="bg-orders"
         />
         <StatCard
-          icon={<MdDoneAll/>}
-          value={totalCompleted} // Menggunakan state yang benar
+          icon={<MdDoneAll />}
+          value={totalCompleted}
           label="Total Pesanan Selesai"
           bgColor="bg-done"
         />
@@ -175,7 +126,7 @@ export default function Dashboard() {
               dataKey="value"
               stroke="#4379EE"
               strokeWidth={2}
-              dot={false}
+              dot={true}
             />
           </LineChart>
         </ResponsiveContainer>
@@ -196,31 +147,31 @@ export default function Dashboard() {
             <thead className="bg-gray-100 text-gray-500 text-left text-xs uppercase">
               <tr>
                 <th className="px-4 py-2">Nama</th>
-                <th className="px-4 py-2">No HP</th>
                 <th className="px-4 py-2">Menu</th>
                 <th className="px-4 py-2">Jumlah Pesanan</th>
+                <th className="px-4 py-2">Total Harga</th>
                 <th className="px-4 py-2">Catatan</th>
-                <th className="px-4 py-2">Status</th>
+                <th className="px-4 py-2 text-center">Status</th>
               </tr>
             </thead>
             <tbody>
               {latestOrders.map((item, index) => (
                 <tr key={index} className="border-b hover:bg-gray-50">
                   <td className="px-4 py-3">{item.nama_pemesan}</td>
-                  <td className="px-4 py-3">{item.no_hp || "-"}</td> {/* Diperbaiki */}
-                  <td className="px-4 py-3">{item.paket}</td>
-                  <td className="px-4 py-3">
-                    Rp {parseInt(item.harga_paket).toLocaleString("id-ID")}
+                  <td className="px-4 py-3">{item.menu}</td>
+                  <td className="px-4 py-3 text-center">{item.jumlah_pesanan}</td>
+                  <td className="px-4 py-3 font-semibold text-orange-600">
+                    Rp {Number(item.harga || 0).toLocaleString("id-ID")}
                   </td>
-                  <td className="px-4 py-3">{item.catatan || "-"}</td> {/* Diperbaiki */}
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3">{item.catatan || "-"}</td>
+                  <td className="px-4 py-3 text-center">
                     <span
-                      className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                      className={`text-[10px] uppercase font-bold px-3 py-1 rounded-full ${
                         item.status === "Pending"
-                          ? "bg-yellow-100 text-yellow-800"
-                          : item.status === "Canceled"
-                          ? "bg-red-100 text-red-700"
-                          : "bg-emerald-100 text-emerald-700"
+                          ? "bg-yellow-100 text-yellow-700"
+                          : item.status === "On Going"
+                          ? "bg-blue-100 text-blue-700"
+                          : "bg-green-100 text-green-700"
                       }`}
                     >
                       {item.status || "Selesai"}
