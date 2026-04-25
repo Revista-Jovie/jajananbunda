@@ -6,7 +6,7 @@ import Feedback from "./pages/Feedback";
 import FaQ from "./pages/FaQ";
 
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
-const Order = React.lazy(() => import("./pages/Order"));
+const Pesanan = React.lazy(() => import("./pages/Pesanan"));
 const Client = React.lazy(() => import("./pages/Client"));
 const Crew = React.lazy(() => import("./pages/Crew"));
 const ErrorPage = React.lazy(() => import("./components/ErrorPage"));
@@ -47,7 +47,7 @@ function App() {
             <Route path="/client/:id" element={<ClientDetail />} />
             <Route path="/crew" element={<Crew />} />
             <Route path="/crew/:id" element={<CrewDetail />} />
-            <Route path="/orders" element={<Order />} />
+            <Route path="/pesanan" element={<Pesanan />} />
             <Route path="/order/:id" element={<OrderDetail />} />
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/faq" element={<FaQ />} />

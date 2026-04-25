@@ -43,7 +43,7 @@ export default function Sidebar() {
         <SidebarItem
           icon={<AiOutlineUnorderedList />}
           label="Pesanan"
-          to="/orders"
+          to="/pesanan"
         />
         <SidebarItem
           icon={<MdOutlineFeedback />}

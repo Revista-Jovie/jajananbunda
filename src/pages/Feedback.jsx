@@ -118,8 +118,8 @@ export default function Feedback() {
             paginatedData.map((item, index) => (
               <tr key={item.id} className="hover:bg-gray-100 cursor-pointer">
                 <td className="px-4 py-4 text-center">{startIndex + index + 1}</td>
-                <td className="px-4 py-4 text-center">{item.nama_customer}</td>
-                <td className="px-4 py-4 text-center">{item.deskripsi}</td>
+                <td className="px-4 py-4 text-center">{item.nama}</td>
+                <td className="px-4 py-4 text-center">{item.pesan}</td>
                 <td className="px-4 py-4 text-center">{item.rating}</td>
                 <td className="px-4 py-4 text-center">
                   <div className="flex justify-center gap-2">

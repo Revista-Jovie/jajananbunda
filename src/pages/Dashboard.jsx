@@ -13,7 +13,7 @@ import { FaBan, FaDollarSign, FaEnvelope } from "react-icons/fa";
 import { BsFillBoxFill } from "react-icons/bs";
 import PageHeader from "../components/PageHeader";
 import { clientApi } from "../services/clientApi";
-import { orderApi } from "../services/orderApi";
+import { pesananApi } from "../services/pesananApi";
 import emailjs from '@emailjs/browser';
 
 export default function Dashboard() {
@@ -129,7 +129,7 @@ export default function Dashboard() {
         <PageHeader title="Dashboard" />
       </div>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         <StatCard
           icon={<BsFillBoxFill />}
           value={totalOrder}
@@ -141,12 +141,6 @@ export default function Dashboard() {
           value={totalCompleted} // Menggunakan state yang benar
           label="Total Pesanan Selesai"
           bgColor="bg-done"
-        />
-        <StatCard
-          icon={<FaBan />}
-          value={totalCanceled} // Menggunakan state yang benar
-          label="Total Pesanan Batal"
-          bgColor="bg-cancel"
         />
         <StatCard
           icon={<FaDollarSign />}
