@@ -115,7 +115,7 @@ export default function Pesanan() {
                 <td className="px-4 py-4 text-center">{startIndex + index + 1}</td>
                 <td className="px-4 py-4 text-center font-bold">{item.nama_pemesan}</td>
                 <td className="px-4 py-4 text-center">
-                  <span className="badge badge-ghost border-gray-200">{item.menu}</span>
+                  {item.menu}
                 </td>
                 <td className="px-4 py-4 text-center">{item.jumlah_pesanan}</td>
                 <td className="px-4 py-4 text-center font-bold text-orange-600">
